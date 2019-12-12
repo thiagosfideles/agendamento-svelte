@@ -1,9 +1,15 @@
 <script>
   import Navbar from "./pages/Navbar.svelte";
   import Sidebar from "./pages/Sidebar.svelte";
+  import Container from "./Container.svelte";
+  import menuOption from "./menu-store";
   import Footer from "./pages/Footer.svelte";
-  import Container from "./pages/Container.svelte";
-  import Home from "./pages/Home.svelte";
+
+  let opcao = "";
+
+  menuOption.subscribe(opc => {
+    opcao = opc;
+  });
 </script>
 
 <style>
@@ -18,7 +24,7 @@
   <Sidebar />
   <div class="page-holder w-100 d-flex flex-wrap">
     <!-- <Container /> -->
-    <Home />
+    <Container content={opcao} />
     <!-- Footer -->
     <Footer />
   </div>

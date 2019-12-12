@@ -1,5 +1,14 @@
 <script>
+  import menuOption from "../menu-store";
 
+  export let selected_option = "home";
+  $: menu_opt = selected_option;
+
+  function handleMenu(e) {
+    e.preventDefault();
+    selected_option = e.target.id;
+    menuOption.set(selected_option);
+  }
 </script>
 
 <style>
@@ -14,16 +23,24 @@
   </div>
   <ul class="sidebar-menu list-unstyled">
     <li class="sidebar-list-item">
-      <a href="." class="sidebar-link text-muted active">
+      <a
+        class="sidebar-link text-muted"
+        href="home"
+        on:click={handleMenu}
+        id="home">
         <i class="o-home-1 mr-3 text-gray" />
         <span>Home</span>
       </a>
     </li>
 
     <li class="sidebar-list-item">
-      <a href="." class="sidebar-link text-muted">
+      <a
+        class="sidebar-link text-muted"
+        href="calendar"
+        on:click={handleMenu}
+        id="calendar">
         <i class="o-table-content-1 mr-3 text-gray" />
-        <span>Tables</span>
+        <span>Agendamento</span>
       </a>
     </li>
     <li class="sidebar-list-item">
